@@ -54,7 +54,7 @@
             <thead class="table">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Collection</th>
+                    <th scope="col" class="col-2">Collection</th>
                     <th scope="col">Floor Price</th>
                     <th scope="col">Avg. Price</th>
                     <th scope="col">1 Day Avg. Price</th>
@@ -77,16 +77,16 @@
         <div class="row justify-content-center">
             <div class="col-8">
                 
-              <!--   <form class="d-flex">
-                    <input class="form-control me-2" type="text" placeholder="Add New Collection" id="idk">
-                    <button type="button"
-                        onclick="addNewCollection('azuki')">+</button>
-                </form> -->
-
-                <form class="d-flex">
-                    <input class="form-control me-2" type="text" placeholder="Search" aria-label="Search" >
-                    <button class="btn btn-outline-success" type="button" onclick="addNewCollection('azuki')">Search</button>
-                  </form>
+                
+                <!-- There are 4 lines, the first line of code is the key that I can submit the variable to function without
+                refreshing the page. Precisely, I add "onsubmit="return false;" in the end of the line.
+                And in the third line, the utility of type="text" and type="submit" are the same
+                refer to this 
+                https://stackoverflow.com/questions/17433557/how-to-save-user-input-into-a-variable-in-html-and-javascript -->                
+                <form class="d-flex" onsubmit="return false;">
+                    <input class="form-control me-2" type="text" placeholder="Add New Collection" id="idk">                
+                    <button type="text" onclick="addNewCollection(document.getElementById(`idk`).value)">+</button>
+                </form>
 
             </div>
         </div>
