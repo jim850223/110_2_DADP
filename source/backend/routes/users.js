@@ -40,7 +40,7 @@ app.post('/register', async (req, res) => {
   })
   await user.save();
   req.session.user_id = user._id;
-  res.send("Registered and Logged in")
+  res.send("1")
 })
 
 app.post('/login', async (req, res) => {
