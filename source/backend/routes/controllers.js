@@ -15,9 +15,9 @@ app.get('/getcollection', async (req, res) => {
     res.send(collectionSet);
 })
 
-app.put('/addcollection', async (req, res) => {
+app.post('/addcollection', async (req, res) => {
     const id = req.session.user_id;
-    const {name, favorite} = req.body.collectionSet
+    const {name} = req.body.collectionSet
     //const collection = await User.findByIdAndUpdate(id, req.body)
     const collection = await User.updateOne({ _id: id },
         {
@@ -26,15 +26,16 @@ app.put('/addcollection', async (req, res) => {
                 collectionSet:
                     [{
                         name: name,
-                        favorite: favorite                    
+                        favorite: 0                    
                     }]
             }       
         }    
     )
-    res.send(collection)
+    //It's weird that I can't return 1 in integer, js will consider it as a status code
+    res.send("1")
 })
 
-app.put('/deletecollection', async (req, res) => {
+app.delete('/deletecollection', async (req, res) => {
     const id = req.session.user_id;
     const {name, favorite} = req.body.collectionSet
     //const collection = await User.findByIdAndUpdate(id, req.body)
@@ -49,10 +50,10 @@ app.put('/deletecollection', async (req, res) => {
             }       
         }    
     )
-    res.send(collection)
+    res.send("1")
 })
 
-app.put('/setFavorite', async (req, res) => {
+app.put('/setfavorite', async (req, res) => {
     let setting;
     const id = req.session.user_id;    
     const {name, favorite} = req.body.collectionSet        
@@ -71,7 +72,7 @@ app.put('/setFavorite', async (req, res) => {
                     }}
             }                   
     )
-    res.send(collection)
+    res.send("1")
 })
 
 

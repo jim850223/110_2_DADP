@@ -24,19 +24,13 @@ app.post('/test', (req, res) => {
 
 app.post('/register', async (req, res) => {
   //res.send(req.body);
-  const { password, username, email } = req.body;
-  const name = req.body.collectionSet.name;
-  const favorite = req.body.collectionSet.favorite;
+  const { password, username, email } = req.body;    
   const hash = await bcrypt.hash(password, 12);
   const user = new User({
       username: username,
       password: hash,
-      email: email,
-      //Have a hard time to handle if there is more than one collections to be added
-      collectionSet: [{
-        name : name,
-        favorite: favorite
-      }]
+      email: email
+      //Have a hard time to handle if there is more than one collections to be added                        
   })
   await user.save();
   req.session.user_id = user._id;
@@ -60,7 +54,7 @@ app.post('/login', async (req, res) => {
   }
 })
 
-app.post('/logout', (req, res) => {
+app.get('/logout', (req, res) => {
   req.session.user_id = null;
   //You can also use destroy if you have more information
   req.session.destroy();
