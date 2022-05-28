@@ -49,14 +49,22 @@ app.post('/login', async (req, res) => {
   const user = await User.findOne({ username: username })
   const validPassword = await bcrypt.compare(password, user.password)
   if (validPassword) {
-      req.session.user_id = user._id;
+      req.session.user_id = user._id;      
       //'1' stands for "Logged in successfully"
+
       res.send('1')
   }
   else {
       //'0' stands for "Fail to log in"
       res.send('0')
   }
+})
+
+app.post('/logout', (req, res) => {
+  req.session.user_id = null;
+  //You can also use destroy if you have more information
+  req.session.destroy();
+  res.send('1');
 })
 
 
