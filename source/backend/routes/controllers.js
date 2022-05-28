@@ -57,18 +57,13 @@ app.put('/setfavorite', async (req, res) => {
     let setting;
     const id = req.session.user_id;    
     const {name, favorite} = req.body.collectionSet        
-    if (favorite) {
-        setting = 0
-    } 
-    else {
-        setting = 1
-    }    
+                                
     const collection = await User.updateOne({ _id: id, "collectionSet.name": name},                    
             {
                 $set:{"collectionSet.$":
                     {   
                         name: name,
-                        favorite: setting
+                        favorite: favorite
                     }}
             }                   
     )
