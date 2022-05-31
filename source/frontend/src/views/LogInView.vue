@@ -18,6 +18,7 @@
 </template-->
 
 <template>
+<NavBar />
 <div>
     <form @submit.prevent="handleSubmit">
         <label>User Name :</label>
@@ -36,9 +37,8 @@
 
 
 <script>
-
+import NavBar from "@/components/NavBar";
 export default{
-
     data() {
         return {
             password: '',
@@ -59,16 +59,22 @@ export default{
                 this.$http({method: 'POST', url: apiEndPoint, data: data})
                   .then(response => {
                     console.log(response)
-                    if (response.statusText == "OK"){
-                      console.log("OK")
-                      this.$router.push('/')
+                    if (response.data == 1){
+                      alert('登入成功!')
+                      this.$router.push('/auth')
+                    }
+                    else{
+                      alert('登入失敗，帳號不存在或是密碼錯誤!')
                     }
                   }).catch((err) => {
                     console.log(err)
                   })
             }
         }
-    }
+    },
+    components: {
+      NavBar,
+    },
     
 }
 </script>

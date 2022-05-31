@@ -18,6 +18,7 @@
 </template-->
 
 <template>
+<NavBar />
 <div>
     <form @submit.prevent="handleSubmit">
         <label>User Name :</label>
@@ -44,7 +45,7 @@
 
 
 <script>
-
+import NavBar from "@/components/NavBar";
 export default{
 
     data() {
@@ -53,8 +54,7 @@ export default{
             password: '',
             password2: '',
             username:'',
-            passwordError: '',
-            http_response: ''
+            passwordError: ''
         }
     },
     methods: {
@@ -81,15 +81,19 @@ export default{
                     console.log(response)
                     if (response.statusText == "OK"){
                       console.log("OK")
+                      alert("註冊成功，可以進行登入")
                       this.$router.push('/')
                     }
                   }).catch((err) => {
                     console.log(err)
+                    alert("註冊失敗")
                   })
             }
         }
+    },
+    components: {
+      NavBar,
     }
-    
 }
 </script>
 

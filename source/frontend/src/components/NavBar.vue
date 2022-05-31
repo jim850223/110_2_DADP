@@ -24,7 +24,7 @@
                         <router-link class="nav-link active" aria-current="page" href="#" to="/signup">Sign Up</router-link>
                     </li>
                     <li class="nav-item">
-                        <router-link class="nav-link active" aria-current="page" href="#" to="/login">Log In</router-link>
+                        <router-link class="nav-link active" aria-current="page" href="#" to="/">Log In</router-link>
                     </li>
                 </ul>
             </div>
