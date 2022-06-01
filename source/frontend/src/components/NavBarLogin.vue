@@ -10,10 +10,7 @@
             <div class="collapse navbar-collapse" id="navbarsExample01">
                 <ul class="navbar-nav me-auto mb-2">
                     <li class="nav-item">
-                        <router-link class="nav-link active" aria-current="page" href="#" to="/signup">Your NFTs Groups</router-link>
-                    </li>
-                    <li class="nav-item">
-                        <router-link class="nav-link active" aria-current="page" href="#" to="/signup">Top 100 NFTs</router-link>
+                        <router-link class="nav-link active" aria-current="page" href="#" to="/auth/favorite">Your Favorite NFTs</router-link>
                     </li>
                     <li class="nav-item">
                         <a @click="logout()" class="nav-link active" aria-current="page" href="#">Log Out</a>

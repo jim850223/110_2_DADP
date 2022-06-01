@@ -22,7 +22,7 @@
 
             <tbody v-for="(collectionInfo, index) in showCollectionData" :key='index' >
                 <!-- Fullfill the innerHTML with the information of collections -->
-                <tr>    
+                <tr v-if="collectionInfo.favorite">    
                     <th v-if="!collectionInfo.favorite" class="center"> <img @click="setFavorite(collectionInfo.collectionApiName, collectionInfo.favorite)" src="../assets/unStar.png" width="20" height="20"> </th>
                     <th v-if="collectionInfo.favorite" class="center"> <img @click="setFavorite(collectionInfo.collectionApiName, collectionInfo.favorite)" src="../assets/star.png" width="20" height="20"> </th>
                     <th>{{index + 1}}</th>  
